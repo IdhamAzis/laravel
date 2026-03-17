@@ -14,8 +14,16 @@ use App\Models\Message;
 //     });
 // });
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/welcome', function () {
+//     $name = 'Idham Azis Pangestu';
+//     return view('welcome', ['name' => $name]);
+// });
+
+
+
+Route::get('/home', function () {
+    $userType = 'admin';
+    return view('home', ['userType' => $userType]);
 });
 
 Route::get('/contact', function () {
@@ -33,6 +41,12 @@ Route::get('/profile', function () {
 
 Route::get('/message', function () {
     return view('message');
+});
+
+Route::get('/products', function () {
+    $products = ['Laptop', 'Keyboard', 'Mouse', 'Monitor'];
+    return view('products', ['products' => $products
+    ]);
 });
 
 Route::post('/message', [MessageController::class, 'store']);
